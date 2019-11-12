@@ -1,0 +1,28 @@
+server:
+  port: 5551
+spring:
+  redis:
+    host: 127.0.0.1
+    database: 0
+    port: 6379
+    password: 123456
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://root:123456@localhost:5555/eureka/
+
+#编写过滤器代码  配置统一访问路径
+#http://root:123456@127.0.0.1:7777/eureka
+zuul:
+ routes:
+    member-cloud-consumer: /index/**
+
+ management:
+    security:
+      enabled: false
